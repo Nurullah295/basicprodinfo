@@ -20,6 +20,13 @@ table th {
   border: 1px solid rgb(174, 24, 24);
   padding: 5px 2px;
 }
+table th {
+    position: sticky;
+    top: 0; /* স্ক্রিনের একদম উপরে আটকে থাকবে */
+    background-color: #1C6EA4; /* স্ক্রল করার সময় পেছনের লেখা যেন না দেখা যায় */
+    color: white;
+    z-index: 10; /* টেবিলের অন্য এলিমেন্টের উপরে থাকার জন্য */
+}
 table td {
     border: 1px solid black;
     padding: 5px 2px;
@@ -228,5 +235,6 @@ table td {
 </body>
 
 </html>
+
 
 
