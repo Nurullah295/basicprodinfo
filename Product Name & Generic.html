@@ -4,13 +4,16 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        table {
-  width: 100%;    
-  background-color: none;
-  font-size: 20px;
-  text-align:left;
-  border-collapse: separate;
-  border: 1px solid #1C6EA4;
+table-container {
+    max-height: 500px; /* আপনার প্রয়োজনমতো উচ্চতা দিন */
+    overflow-y: auto;  /* ভার্টিকাল স্ক্রল এনেবল করবে */
+    overflow-x: auto;  /* মোবাইল রেসপন্সিভনেসের জন্য */
+    border: 1px solid #1C6EA4;
+}
+table {
+    width: 100%;    
+    border-collapse: separate;
+    border-spacing: 0;
 }
 table td:first-child {
     font-weight: bold;
@@ -21,19 +24,22 @@ table th {
   padding: 5px 2px;
 }
 table th {
+    position: -webkit-sticky; /* Safari এর জন্য */
     position: sticky;
-    top: 0; /* স্ক্রিনের একদম উপরে আটকে থাকবে */
-    background-color: #1C6EA4; /* স্ক্রল করার সময় পেছনের লেখা যেন না দেখা যায় */
+    top: 0; 
+    background-color: #1C6EA4; 
     color: white;
-    z-index: 10; /* টেবিলের অন্য এলিমেন্টের উপরে থাকার জন্য */
+    z-index: 10;
+    border: 1px solid #ffffff; /* হেডার বর্ডার সাদা করলে সুন্দর দেখাবে */
 }
 table td {
     border: 1px solid black;
     padding: 5px 2px;
 }
-  </style>
+</style>
 </head>
 <body>
+<div class="table-container">    
 <table>
  
 <tr><th>	Product Name	</th><th>	Generic name	</th></tr>
@@ -229,14 +235,7 @@ table td {
 <tr><td>	Vomitop Tablet	</td><td>	Domperidone maleate BP 10mg	</td></tr>
 <tr><td>	Vontac 20 Tablet	</td><td>	Vonoprazan fumarate INN 20 mg	</td></tr>
 <tr><td>	Zenocin 10gm Cream	</td><td>	Ozenoxacin INN 1%	</td></tr>
-
 </table>
-
+</div>
 </body>
-
 </html>
-
-
-
-
-
