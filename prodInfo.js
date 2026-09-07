@@ -1,43 +1,47 @@
+/**
+ * Premium Search Interaction
+ */
 
+function handleSearchInput() {
+    const searchBox = document.getElementById('searchBox');
+    const clearButton = document.querySelector('.clear-search');
 
-    // Function to handle search input and show/hide clear button
-    function handleSearchInput() {
-        const searchBox = document.getElementById('searchBox');
-        const clearButton = document.querySelector('.clear-search');
+    const query = searchBox.value.trim().toUpperCase();
+    const dataList = document.getElementById('dataList');
+    const items = dataList.getElementsByTagName('li');
 
-        filterData(); // Filter the list
+    // Show/Hide clear button with animation
+    if (query.length > 0) {
+        clearButton.style.display = 'flex';
+    } else {
+        clearButton.style.display = 'none';
+    }
 
-        // Show clear button if there's text, hide if empty
-        if (searchBox.value.length > 0) {
-            clearButton.style.display = 'block';
+    // Filter items with a clean animation feel
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        const text = item.textContent || item.innerText;
+
+        if (text.toUpperCase().indexOf(query) > -1) {
+            item.style.display = '';
+            // Re-trigger animation if needed
+            item.style.animation = 'none';
+            item.offsetHeight; // trigger reflow
+            item.style.animation = null;
         } else {
-            clearButton.style.display = 'none';
+            item.style.display = 'none';
         }
     }
+}
 
-    // Function to clear search and reset list
-    function clearSearch() {
-        const searchBox = document.getElementById('searchBox');
-        searchBox.value = '';
-        document.querySelector('.clear-search').style.display = 'none';
-        filterData(); // Reset the list
-    }
+function clearSearch() {
+    const searchBox = document.getElementById('searchBox');
+    searchBox.value = '';
+    handleSearchInput();
+    searchBox.focus();
+}
 
-    // Function to filter data based on search input
-    function filterData() {
-        const input = document.getElementById('searchBox').value.toUpperCase();
-        const dataList = document.getElementById('dataList');
-        const items = dataList.getElementsByTagName('li');
-
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            if (item.textContent.toUpperCase().indexOf(input) > -1) {
-                item.style.display = '';
-            } else {
-                item.style.display = 'none';
-            }
-        }
-    }
-
-
-
+// Ensure smooth focus on search box
+document.getElementById('searchBox').addEventListener('focus', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
