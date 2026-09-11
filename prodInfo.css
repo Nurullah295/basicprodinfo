@@ -22,7 +22,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-light);
     color: var(--text-main);
-    margin: 0;
+    margin: 20sp;
     padding: 0;
     line-height: 1.6;
 }
